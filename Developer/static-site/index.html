@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaroslav Makarenko | Експерт з преміальної нерухомості</title>
+    <meta name="description" content="Професійні послуги з купівлі, продажу та оренди преміальної нерухомості у Києві. 10+ років досвіду, 150+ успішних угод.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0A1628',
+                        'primary-blue': '#1E3A5F',
+                        'accent-gold': '#C9A962',
+                        'off-white': '#F8F9FA',
+                        'light-gray': '#E8EAED',
+                        'medium-gray': '#9CA3AF',
+                        'dark-gray': '#4B5563',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        .grayscale-hover { filter: grayscale(100%); opacity: 0.5; transition: all 0.4s; }
+        .grayscale-hover:hover { filter: grayscale(0%); opacity: 1; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        .error-border { border-color: #ef4444 !important; }
+        .error-text { color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem; }
+    </style>
+</head>
+<body class="font-inter antialiased text-primary-dark">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="flex flex-col">
+                    <span class="text-white font-playfair text-xl font-semibold">Yaroslav Makarenko</span>
+                    <span class="text-accent-gold text-xs tracking-wider uppercase">Головна</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Головна
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Про мене
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#services" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Послуги
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#process" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Етапи
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#testimonials" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Відгуки
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-white/80 hover:text-accent-gold text-sm font-medium transition-colors relative group">
+                        Контакти
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <div class="flex gap-1">
+                        <button onclick="switchLang('uk')" id="btn-uk" class="px-2 py-1 rounded text-xs font-medium bg-accent-gold text-primary-dark transition-colors">UA</button>
+                        <button onclick="switchLang('en')" id="btn-en" class="px-2 py-1 rounded text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-colors">EN</button>
+                        <button onclick="switchLang('ru')" id="btn-ru" class="px-2 py-1 rounded text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-colors">RU</button>
+                    </div>
+                    <a href="#contact" class="hidden md:flex items-center gap-2 bg-accent-gold text-primary-dark px-5 py-2.5 rounded font-montserrat text-sm font-semibold uppercase tracking-wider hover:bg-accent-gold/90 transition-colors">
+                        <i class="fas fa-phone text-sm"></i><span id="header-cta">Зв'язатися</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden text-white p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-64 bg-primary-dark/95 backdrop-blur-md z-50 p-5 lg:hidden">
+        <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-white">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <nav class="flex flex-col space-y-4 mt-12">
+            <a href="#home" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Головна</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Про мене</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Послуги</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Етапи</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Відгуки</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-white/80 hover:text-accent-gold text-lg font-medium transition-colors">Контакти</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/hero-bg.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/40 via-primary-dark/60 to-primary-dark/90"></div>
+        </div>
+        <div class="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 text-center pt-20">
+            <div class="space-y-6 animate-slide-up" style="animation-delay: 0.2s;">
+                <p class="text-accent-gold text-sm md:text-base font-montserrat uppercase tracking-[0.2em]">Експерт з преміальної нерухомості</p>
+                <h1 class="text-white font-playfair text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight">Yaroslav Makarenko</h1>
+                <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">Допомагаю знайти ідеальну нерухомість у Києві та регіоні</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent-gold text-primary-dark px-8 py-4 rounded font-montserrat text-sm font-semibold uppercase tracking-wider hover:bg-accent-gold/90 transition-all hover:-translate-y-0.5">
+                        <i class="fas fa-phone text-sm"></i>Безкоштовна консультація
+                    </a>
+                    <a href="#services" class="inline-flex items-center justify-center gap-2 border-2 border-accent-gold text-accent-gold px-8 py-4 rounded font-montserrat text-sm font-semibold uppercase tracking-wider hover:bg-accent-gold hover:text-primary-dark transition-all">
+                        Дивитися об'єкти<i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 pt-12">
+                    <div class="text-center">
+                        <p class="text-white font-montserrat text-2xl font-bold">150+</p>
+                        <p class="text-white/60 text-sm">успішних угод</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-white font-montserrat text-2xl font-bold">10+</p>
+                        <p class="text-white/60 text-sm">років досвіду</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-white font-montserrat text-2xl font-bold">98%</p>
+                        <p class="text-white/60 text-sm">задоволених клієнтів</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+            <a href="#benefits" class="text-white/60 hover:text-accent-gold transition-colors animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 bg-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-primary-dark font-playfair text-3xl md:text-4xl font-semibold mb-4">Чому обирають мене</h2>
+                <p class="text-dark-gray text-lg max-w-2xl mx-auto">Професійний підхід та індивідуальна увага до кожного клієнта</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-chart-line text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Експертиза ринку</h3>
+                    <p class="text-dark-gray leading-relaxed">Глибоке розуміння ринку преміальної нерухомості Києва</p>
+                </div>
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-heart text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Персональний підхід</h3>
+                    <p class="text-dark-gray leading-relaxed">Індивідуальна стратегія для кожного клієнта</p>
+                </div>
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-shield-alt text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Повний супровід</h3>
+                    <p class="text-dark-gray leading-relaxed">Від пошуку до оформлення документів — під ключ</p>
+                </div>
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-lock text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Конфіденційність</h3>
+                    <p class="text-dark-gray leading-relaxed">Повна конфіденційність угод та дискреція</p>
+                </div>
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.5s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-clock text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Економія часу</h3>
+                    <p class="text-dark-gray leading-relaxed">Оптимізований процес без зайвих витрат часу</p>
+                </div>
+                <div class="group p-8 rounded-lg bg-off-white hover:bg-white hover:shadow-xl transition-all duration-400 hover:-translate-y-1 animate-slide-up" style="animation-delay: 0.6s;">
+                    <div class="w-14 h-14 rounded-lg bg-primary-dark/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 transition-colors">
+                        <i class="fas fa-headset text-2xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-xl mb-3">Післяпродажний сервіс</h3>
+                    <p class="text-dark-gray leading-relaxed">Підтримка навіть після завершення угоди</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="about" class="py-32 bg-primary-dark text-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-fade-in">
+                    <span class="text-accent-gold font-montserrat text-sm uppercase tracking-wider">Моя експертиза</span>
+                    <h2 class="font-playfair text-3xl md:text-4xl font-semibold mt-4 mb-6 leading-tight">10+ років досвіду на ринку преміальної нерухомості</h2>
+                    <p class="text-white/70 text-lg leading-relaxed mb-8">Спеціалізація на преміальному сегменті нерухомості Києва. Поглиблене розуміння ринку, трендів та можливостей для максимально вигідних угод.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-xs text-accent-gold"></i>
+                            </div>
+                            <span class="text-white/80">Експертиза преміального сегмента</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-xs text-accent-gold"></i>
+                            </div>
+                            <span class="text-white/80">Глибоке знання ринку Києва</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-xs text-accent-gold"></i>
+                            </div>
+                            <span class="text-white/80">Переговорні навички топ-рівня</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-xs text-accent-gold"></i>
+                            </div>
+                            <span class="text-white/80">Юридичний супровід угод</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-8">
+                    <div class="relative rounded-lg overflow-hidden animate-fade-in">
+                        <img src="images/expert-photo.jpg" alt="Yaroslav Makarenko" class="w-full h-auto object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/50 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <p class="text-accent-gold font-montserrat text-3xl md:text-4xl font-bold">150+</p>
+                            <p class="text-white/60 text-sm mt-2 uppercase tracking-wider">Успішних угод</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-accent-gold font-montserrat text-3xl md:text-4xl font-bold">₴500M+</p>
+                            <p class="text-white/60 text-sm mt-2 uppercase tracking-wider">Оборот угод</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-accent-gold font-montserrat text-3xl md:text-4xl font-bold">98%</p>
+                            <p class="text-white/60 text-sm mt-2 uppercase tracking-wider">Задоволених клієнтів</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-accent-gold font-montserrat text-3xl md:text-4xl font-bold">10+</p>
+                            <p class="text-white/60 text-sm mt-2 uppercase tracking-wider">Років досвіду</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-off-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-primary-dark font-playfair text-3xl md:text-4xl font-semibold mb-4">Як ми будемо працювати</h2>
+                <p class="text-dark-gray text-lg max-w-2xl mx-auto">Прозорий процес від першої зустрічі до отримання ключів</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <div class="relative text-center animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-off-white">
+                        <span class="text-accent-gold font-montserrat text-2xl font-bold">01</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary-dark/5 flex items-center justify-center">
+                        <i class="fas fa-comments text-xl text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-lg mb-2">Консультація</h3>
+                    <p class="text-dark-gray text-sm leading-relaxed">Безкоштовна зустріч для обговорення ваших потреб та цілей</p>
+                </div>
+                <div class="relative text-center animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-off-white">
+                        <span class="text-accent-gold font-montserrat text-2xl font-bold">02</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary-dark/5 flex items-center justify-center">
+                        <i class="fas fa-search text-xl text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-lg mb-2">Підбір варіантів</h3>
+                    <p class="text-dark-gray text-sm leading-relaxed">Формування короткого списку об'єктів під ваші критерії</p>
+                </div>
+                <div class="relative text-center animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-off-white">
+                        <span class="text-accent-gold font-montserrat text-2xl font-bold">03</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary-dark/5 flex items-center justify-center">
+                        <i class="fas fa-eye text-xl text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-lg mb-2">Огляди</h3>
+                    <p class="text-dark-gray text-sm leading-relaxed">Організація переглядів обраних об'єктів у зручний час</p>
+                </div>
+                <div class="relative text-center animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-off-white">
+                        <span class="text-accent-gold font-montserrat text-2xl font-bold">04</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary-dark/5 flex items-center justify-center">
+                        <i class="fas fa-handshake text-xl text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-lg mb-2">Переговори</h3>
+                    <p class="text-dark-gray text-sm leading-relaxed">Професійні переговори та підготовка угоди</p>
+                </div>
+                <div class="relative text-center animate-slide-up" style="animation-delay: 0.5s;">
+                    <div class="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white shadow-lg flex items-center justify-center border-4 border-off-white">
+                        <span class="text-accent-gold font-montserrat text-2xl font-bold">05</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-primary-dark/5 flex items-center justify-center">
+                        <i class="fas fa-key text-xl text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-primary-dark font-semibold text-lg mb-2">Оформлення</h3>
+                    <p class="text-dark-gray text-sm leading-relaxed">Повний юридичний супровід та закриття угоди</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-primary-dark font-playfair text-2xl md:text-3xl font-semibold mb-3">Нам довіряють</h2>
+                <p class="text-dark-gray">Співпраця з провідними забудовниками та партнерами</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+                <div class="flex items-center justify-center p-6 grayscale-hover">
+                    <img src="images/partner-1.png" alt="Partner 1" class="max-h-16 w-auto object-contain" />
+                </div>
+                <div class="flex items-center justify-center p-6 grayscale-hover">
+                    <img src="images/partner-2.png" alt="Partner 2" class="max-h-16 w-auto object-contain" />
+                </div>
+                <div class="flex items-center justify-center p-6 grayscale-hover">
+                    <img src="images/partner-3.png" alt="Partner 3" class="max-h-16 w-auto object-contain" />
+                </div>
+                <div class="flex items-center justify-center p-6 grayscale-hover">
+                    <img src="images/partner-1.png" alt="Partner 4" class="max-h-16 w-auto object-contain" />
+                </div>
+                <div class="flex items-center justify-center p-6 grayscale-hover">
+                    <img src="images/partner-2.png" alt="Partner 5" class="max-h-16 w-auto object-contain" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-off-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-primary-dark font-playfair text-3xl md:text-4xl font-semibold mb-4">Відгуки клієнтів</h2>
+                <p class="text-dark-gray text-lg max-w-2xl mx-auto">Що кажуть люди, з якими я працював</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow relative animate-slide-up" style="animation-delay: 0.1s;">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-2xl text-accent-gold/20"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                    </div>
+                    <p class="text-dark-gray leading-relaxed mb-6 italic">"Ярослав професійно підійшов до продажу нашої квартири. Отримали ціну вище очікуваної за рекордний термін."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/client-1.jpg" alt="Олександр К." class="w-14 h-14 rounded-full object-cover" />
+                        <div>
+                            <p class="text-primary-dark font-semibold">Олександр К.</p>
+                            <p class="text-medium-gray text-sm">Продавець квартири</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow relative animate-slide-up" style="animation-delay: 0.2s;">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-2xl text-accent-gold/20"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                    </div>
+                    <p class="text-dark-gray leading-relaxed mb-6 italic">"Знайшли свій будинок мрії завдяки експертизі Ярослава. Процес був легким та прозорим."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/client-2.jpg" alt="Марина та Ігор" class="w-14 h-14 rounded-full object-cover" />
+                        <div>
+                            <p class="text-primary-dark font-semibold">Марина та Ігор</p>
+                            <p class="text-medium-gray text-sm">Покупці будинку</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow relative animate-slide-up" style="animation-delay: 0.3s;">
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-2xl text-accent-gold/20"></i>
+                    <div class="flex gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                        <i class="fas fa-star text-accent-gold text-sm"></i>
+                    </div>
+                    <p class="text-dark-gray leading-relaxed mb-6 italic">"Допоміг зробити вигідну інвестицію в комерційну нерухомість. Рекомендую як надійного консультанта."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/client-3.jpg" alt="Вікторія С." class="w-14 h-14 rounded-full object-cover" />
+                        <div>
+                            <p class="text-primary-dark font-semibold">Вікторія С.</p>
+                            <p class="text-medium-gray text-sm">Інвестор</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-32 bg-gradient-to-br from-primary-blue to-primary-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-accent-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent-gold rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        <div class="max-w-[800px] mx-auto px-5 md:px-8 relative z-10">
+            <div class="text-center text-white animate-fade-in">
+                <h2 class="font-playfair text-3xl md:text-4xl font-semibold mb-4">Готові знайти свою ідеальну нерухомість?</h2>
+                <p class="text-white/70 text-lg mb-10">Запишіться на безкоштовну консультацію</p>
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <input type="text" id="name" required placeholder="Ваше ім'я" 
+                                class="w-full px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-accent-gold transition-all" />
+                            <p id="nameError" class="error-text hidden">Введіть ім'я (мінімум 2 символи)</p>
+                        </div>
+                        <div>
+                            <input type="tel" id="phone" required placeholder="Телефон" 
+                                class="w-full px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-accent-gold transition-all" />
+                            <p id="phoneError" class="error-text hidden">Введіть коректний номер телефону</p>
+                        </div>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-accent-gold text-primary-dark px-10 py-4 rounded-lg font-montserrat font-semibold uppercase tracking-wider hover:bg-accent-gold/90 transition-all disabled:opacity-50">
+                        <i class="fas fa-paper-plane"></i><span id="btnText">Замовити дзвінок</span>
+                    </button>
+                </form>
+                <div id="successMessage" class="hidden bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center">
+                    <i class="fas fa-check-circle text-5xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Дякую! Я зв'яжуся з вами найближчим часом.</h3>
+                </div>
+                <div class="mt-8 flex items-center justify-center gap-2 text-white/60">
+                    <i class="fas fa-phone text-sm"></i><span>+38 (067) 123-45-67</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-medium-gray">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="space-y-4">
+                    <h3 class="text-white font-playfair text-xl font-semibold">Yaroslav Makarenko</h3>
+                    <p class="text-sm leading-relaxed">Ваш надійний партнер у світі преміальної нерухомості Києва</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-medium-gray hover:text-accent-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-medium-gray hover:text-accent-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-medium-gray hover:text-accent-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-medium-gray hover:text-accent-gold transition-colors"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Навігація</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-sm hover:text-accent-gold transition-colors">Головна</a></li>
+                        <li><a href="#about" class="text-sm hover:text-accent-gold transition-colors">Про мене</a></li>
+                        <li><a href="#services" class="text-sm hover:text-accent-gold transition-colors">Послуги</a></li>
+                        <li><a href="#process" class="text-sm hover:text-accent-gold transition-colors">Етапи</a></li>
+                        <li><a href="#testimonials" class="text-sm hover:text-accent-gold transition-colors">Відгуки</a></li>
+                        <li><a href="#contact" class="text-sm hover:text-accent-gold transition-colors">Контакти</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Послуги</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>Продаж нерухомості</li>
+                        <li>Купівля нерухомості</li>
+                        <li>Оренда</li>
+                        <li>Інвестиції</li>
+                        <li>Консультації</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Контакти</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-accent-gold text-sm"></i><span class="text-sm">+38 (067) 123-45-67</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-accent-gold text-sm"></i><span class="text-sm">info@yaroslavmakarenko.com</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-accent-gold text-sm mt-1"></i><span class="text-sm">м. Київ, вул. Хрещатик, 15</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-clock text-accent-gold text-sm"></i><span class="text-sm">Пн-Пт: 9:00 - 19:00</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-10 rounded-lg overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.1242085462457!2d30.52123631589665!3d50.45035997947563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce5054e3c167%3A0x8c5c1234567890ab!2sKhreshchatyk%20St%2C%2015%2C%20Kyiv%2C%2002000!5e0!3m2!1sen!2sua!4v1234567890123!5m2!1sen!2sua" width="100%" height="200" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Office Location"></iframe>
+            </div>
+            <div class="mt-10 pt-6 border-t border-light-gray/20 text-center text-sm">© 2025 Yaroslav Makarenko. Всі права захищені.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-primary-dark/95', 'backdrop-blur-md', 'shadow-lg');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.remove('bg-primary-dark/95', 'backdrop-blur-md', 'shadow-lg');
+                header.classList.add('bg-transparent');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Language switcher
+        function switchLang(lang) {
+            // Update active button
+            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('bg-accent-gold', 'text-primary-dark');
+                btn.classList.add('text-white/60');
+            });
+            document.getElementById('btn-' + lang).classList.add('bg-accent-gold', 'text-primary-dark');
+            document.getElementById('btn-' + lang).classList.remove('text-white/60');
+            
+            // Here you would typically reload content with translations
+            // For now, just show alert
+            const messages = {
+                uk: 'Мова змінена на Українську',
+                en: 'Language changed to English',
+                ru: 'Язык изменен на Русский'
+            };
+            alert(messages[lang]);
+        }
+
+        // Form validation and submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name');
+            const phone = document.getElementById('phone');
+            const nameError = document.getElementById('nameError');
+            const phoneError = document.getElementById('phoneError');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            
+            let isValid = true;
+            
+            // Validate name
+            if (name.value.trim().length < 2) {
+                name.classList.add('error-border');
+                nameError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                name.classList.remove('error-border');
+                nameError.classList.add('hidden');
+            }
+            
+            // Validate phone (Ukrainian format)
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(phone.value.trim())) {
+                phone.classList.add('error-border');
+                phoneError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                phone.classList.remove('error-border');
+                phoneError.classList.add('hidden');
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Відправка...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + btnText.textContent;
+            
+            // Simulate form submission (replace with actual Telegram API call)
+            setTimeout(function() {
+                document.getElementById('contactForm').classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+                
+                // Here you would add actual Telegram API integration:
+                // fetch('https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage', {...})
+            }, 1500);
+        });
+
+        // Real-time validation
+        document.getElementById('name').addEventListener('input', function() {
+            if (this.value.trim().length >= 2) {
+                this.classList.remove('error-border');
+                document.getElementById('nameError').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (phoneRegex.test(this.value.trim())) {
+                this.classList.remove('error-border');
+                document.getElementById('phoneError').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

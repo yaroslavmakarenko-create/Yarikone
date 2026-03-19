@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "title": "Yaroslav Makarenko | Premium Real Estate Expert",
+    "description": "Professional services for buying, selling, and renting premium real estate in Kyiv. 10+ years of experience, 150+ successful deals."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "process": "Process",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "cta": "Get in Touch"
+  },
+  "hero": {
+    "tagline": "Premium Real Estate Expert",
+    "name": "Yaroslav Makarenko",
+    "subtitle": "Helping you find the perfect property in Kyiv and the region",
+    "ctaPrimary": "Free Consultation",
+    "ctaSecondary": "View Properties",
+    "stats": {
+      "deals": "150+ Successful Deals",
+      "experience": "10+ Years Experience",
+      "clients": "98% Satisfied Clients"
+    }
+  },
+  "benefits": {
+    "title": "Why Choose Me",
+    "subtitle": "Professional approach and individual attention to each client",
+    "items": {
+      "expertise": {
+        "title": "Market Expertise",
+        "description": "Deep understanding of Kyiv's premium real estate market"
+      },
+      "personal": {
+        "title": "Personal Approach",
+        "description": "Individual strategy for each client"
+      },
+      "fullservice": {
+        "title": "Full Service",
+        "description": "From search to documentation — turnkey"
+      },
+      "confidential": {
+        "title": "Confidentiality",
+        "description": "Complete transaction confidentiality and discretion"
+      },
+      "time": {
+        "title": "Time Saving",
+        "description": "Optimized process without wasted time"
+      },
+      "aftersale": {
+        "title": "After-Sale Service",
+        "description": "Support even after the deal is closed"
+      }
+    }
+  },
+  "expertise": {
+    "tagline": "My Expertise",
+    "title": "10+ Years in Premium Real Estate",
+    "description": "Specializing in Kyiv's premium real estate segment. In-depth understanding of the market, trends, and opportunities for the most profitable deals.",
+    "stats": {
+      "deals": { "value": "150+", "label": "Successful Deals" },
+      "volume": { "value": "₴500M+", "label": "Transaction Volume" },
+      "satisfaction": { "value": "98%", "label": "Satisfied Clients" },
+      "experience": { "value": "10+", "label": "Years Experience" }
+    },
+    "features": [
+      "Premium segment expertise",
+      "Deep knowledge of Kyiv market",
+      "Top-level negotiation skills",
+      "Legal transaction support"
+    ]
+  },
+  "process": {
+    "title": "How We Will Work",
+    "subtitle": "Transparent process from first meeting to getting the keys",
+    "steps": {
+      "1": { "title": "Consultation", "description": "Free meeting to discuss your needs and goals" },
+      "2": { "title": "Selection", "description": "Creating a shortlist of properties matching your criteria" },
+      "3": { "title": "Viewings", "description": "Organizing viewings of selected properties at your convenience" },
+      "4": { "title": "Negotiations", "description": "Professional negotiations and deal preparation" },
+      "5": { "title": "Closing", "description": "Full legal support and transaction closing" }
+    }
+  },
+  "trust": {
+    "title": "Trusted By",
+    "subtitle": "Partnership with leading developers and partners"
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "What people say about working with me",
+    "items": {
+      "1": {
+        "name": "Oleksandr K.",
+        "role": "Apartment Seller",
+        "text": "Yaroslav professionally handled the sale of our apartment. We got a price above expectations in record time."
+      },
+      "2": {
+        "name": "Maryna & Ihor",
+        "role": "Home Buyers",
+        "text": "Found our dream home thanks to Yaroslav's expertise. The process was easy and transparent."
+      },
+      "3": {
+        "name": "Viktoriia S.",
+        "role": "Investor",
+        "text": "Helped make a profitable investment in commercial real estate. I recommend him as a reliable consultant."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Find Your Perfect Property?",
+    "subtitle": "Sign up for a free consultation",
+    "form": {
+      "name": "Your Name",
+      "phone": "Phone",
+      "submit": "Request a Call",
+      "sending": "Sending...",
+      "success": "Thank you! I will contact you soon.",
+      "error": "An error occurred. Please try again."
+    }
+  },
+  "footer": {
+    "description": "Your reliable partner in Kyiv's premium real estate",
+    "navigation": "Navigation",
+    "services": "Services",
+    "contacts": {
+      "title": "Contacts",
+      "phone": "+38 (067) 123-45-67",
+      "email": "info@yaroslavmakarenko.com",
+      "address": "15 Khreshchatyk St., Kyiv",
+      "hours": "Mon-Fri: 9:00 - 19:00"
+    },
+    "copyright": "© 2025 Yaroslav Makarenko. All rights reserved."
+  }
+}
